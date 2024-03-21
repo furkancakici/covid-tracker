@@ -1,23 +1,16 @@
-import WorldMap from 'react-svg-worldmap'
-
 import { ModeToggle } from '@/components/molecules/mode-toggle'
-import countryCode from '@/constants/country-code'
+import WorldChart from '@/components/molecules/world-chart'
+import Header from '@/components/organism/header'
+import MainLayout from '@/pages/main-layout'
+// import countryCode from '@/constants/country-code'
 
 const HomePage = () => {
     return (
-        <div className='max-w-4xl grid place-items-center'>
+        <MainLayout>
+            <Header />
             <ModeToggle />
-            <WorldMap
-                color='#EA580B'
-                tooltipBgColor='#FFFFFF'
-                tooltipTextColor='#000000'
-                backgroundColor='transparent'
-                borderColor='#692805'
-                title='Covid-19 Tracker World Map'
-                size='xl'
-                data={countryCode}
-            />
-        </div>
+            <WorldChart />
+        </MainLayout>
     )
 }
 

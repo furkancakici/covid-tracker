@@ -1,8 +1,8 @@
-import HomePage from './pages/home-page'
+import HomePage from '@/pages/home-page'
 
 function App() {
     return (
-        <div className='w-full h-full min-h-screen grid place-items-center'>
+        <div>
             <HomePage />
         </div>
     )
