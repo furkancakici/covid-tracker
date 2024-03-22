@@ -1,13 +1,15 @@
+import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 
-import CountryDetail from '@/pages/country-detail'
-import HomePage from '@/pages/home-page'
-import MainLayout from '@/pages/main-layout'
-import ReportsPage from '@/pages/reports-page'
+import MainLayoutPage from '@/pages/main-layout-page'
+
+const HomePage = lazy(() => import('@/pages/home-page'))
+const CountryDetailPage = lazy(() => import('@/pages/country-detail-page'))
+const ReportsPage = lazy(() => import('@/pages/reports-page'))
 
 const router = createBrowserRouter([
     {
-        element: <MainLayout />,
+        element: <MainLayoutPage />,
         children: [
             {
                 path: '/',
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/country/:id',
-                element: <CountryDetail />
+                element: <CountryDetailPage />
             },
             {
                 path: '/reports',

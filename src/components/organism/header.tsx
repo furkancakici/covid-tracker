@@ -8,7 +8,7 @@ const Header = () => {
             <div className='container flex h-14 max-w-screen-2xl items-center'>
                 <div className='flex mr-4 justify-center items-center'>
                     <div className='flex items-center mr-6 space-x-2'>
-                        <img src='/site-logo.png' alt='covid-tracker site logo' className='size-12' />
+                        <img src='/site-logo.png' alt='covid-tracker site logo' className='size-10' />
                         <span className='hidden sm:flex text-sm font-bold'>Covid Tracker</span>
                     </div>
                     <ul className='flex justify-center items-center gap-4 [&_a.active]:font-bold'>
