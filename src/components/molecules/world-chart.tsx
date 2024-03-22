@@ -9,17 +9,19 @@ const WorldMapChart = () => {
         console.log(alpha2ToAlpha3(countryCode.toLowerCase()))
     }, [])
 
-    // console.log(state.iso, state.val, state.cName)
+    const customTooltipText = useCallback(({ countryName }: CountryContext) => {
+        return `${countryName}`
+    }, [])
 
     return (
         <WorldMap
             color='#EA580B'
             backgroundColor='bg-background'
             title='Top 10 Populous Countries'
-            value-suffix='people'
             size='lg'
             data={alpha2Code}
             onClickFunction={clickAction}
+            tooltipTextFunction={customTooltipText}
         />
     )
 }

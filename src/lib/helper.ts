@@ -1,9 +1,9 @@
-import { countryCode } from '@/constants'
+import { countryAlpha2Code } from '@/constants'
 
 export const alpha2ToAlpha3 = (alpha2: string) => {
-    for (let i = 0; i < countryCode.length; i++) {
-        if (countryCode[i][0] === alpha2) {
-            return countryCode[i][1]
+    for (let i = 0; i < countryAlpha2Code.length; i++) {
+        if (countryAlpha2Code[i][0] === alpha2) {
+            return countryAlpha2Code[i][1]
         }
     }
 
