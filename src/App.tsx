@@ -1,11 +1,9 @@
-import HomePage from '@/pages/home-page'
+import { RouterProvider } from 'react-router-dom'
 
-function App() {
-    return (
-        <div>
-            <HomePage />
-        </div>
-    )
+import router from '@/router'
+
+const App = () => {
+    return <RouterProvider router={router} />
 }
 
 export default App
