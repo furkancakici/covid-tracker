@@ -17,8 +17,7 @@ const WorldMapChart = () => {
         <WorldMap
             color='#EA580B'
             backgroundColor='bg-background'
-            title='Top 10 Populous Countries'
-            size='lg'
+            size='xl'
             data={alpha2Code}
             onClickFunction={clickAction}
             tooltipTextFunction={customTooltipText}
