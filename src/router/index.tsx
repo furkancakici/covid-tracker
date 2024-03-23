@@ -3,11 +3,11 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import MainLayoutPage from '@/pages/main-layout-page'
 
-const HomePage = lazy(() => import('@/pages/home-page'))
 const CountryDetailPage = lazy(() => import('@/pages/country-detail-page'))
+const HomePage = lazy(() => import('@/pages/home-page'))
 const ReportsPage = lazy(() => import('@/pages/reports-page'))
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
     {
         element: <MainLayoutPage />,
         children: [
@@ -26,5 +26,3 @@ const router = createBrowserRouter([
         ]
     }
 ])
-
-export default router
