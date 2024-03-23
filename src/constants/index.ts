@@ -1,8 +1,3 @@
-import dayjs from 'dayjs'
-
-import { Datum } from '@/types/table-type'
-import { ColumnDef } from '@tanstack/react-table'
-
 export const alpha2Code = [
     { country: 'af', value: 1 },
     { country: 'al', value: 1 },
@@ -505,58 +500,4 @@ export const countryAlpha2Code = [
     ['zm', 'ZMB'],
     ['zw', 'ZWE'],
     ['ax', 'ALA']
-]
-
-export const columns: ColumnDef<Datum>[] = [
-    {
-        accessorKey: 'region',
-        header: 'Region',
-        cell: row => row.row.original.region.province
-    },
-    {
-        accessorKey: 'confirmed',
-        header: 'Confirmed'
-    },
-    {
-        accessorKey: 'deaths',
-        header: 'Deaths'
-    },
-    {
-        accessorKey: 'recovered',
-        header: 'Recovered'
-    },
-    {
-        accessorKey: 'confirmed_diff',
-        header: 'Confirmed Diff'
-    },
-    {
-        accessorKey: 'deaths_diff',
-        header: 'Deaths Diff'
-    },
-    {
-        accessorKey: 'recovered_diff',
-        header: 'Recovered Diff'
-    },
-    {
-        accessorKey: 'active',
-        header: 'Active'
-    },
-    {
-        accessorKey: 'active_diff',
-        header: 'Active Diff'
-    },
-    {
-        accessorKey: 'fatality_rate',
-        header: 'Fatality Rate'
-    },
-    {
-        accessorKey: 'last_update',
-        header: 'Last Update',
-        cell: row => dayjs(row.row.original.last_update).format('DD-MM-YYYY')
-    },
-    {
-        accessorKey: 'date',
-        header: 'Date',
-        cell: row => dayjs(row.row.original.date).format('DD-MM-YYYY')
-    }
 ]
