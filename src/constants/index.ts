@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 import { Datum } from '@/types/table-type'
 import { ColumnDef } from '@tanstack/react-table'
 
@@ -549,10 +551,12 @@ export const columns: ColumnDef<Datum>[] = [
     },
     {
         accessorKey: 'last_update',
-        header: 'Last Update'
+        header: 'Last Update',
+        cell: row => dayjs(row.row.original.last_update).format('DD-MM-YYYY')
     },
     {
         accessorKey: 'date',
-        header: 'Date'
+        header: 'Date',
+        cell: row => dayjs(row.row.original.date).format('DD-MM-YYYY')
     }
 ]

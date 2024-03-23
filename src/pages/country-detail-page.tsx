@@ -8,8 +8,6 @@ import { Datum } from '@/types/table-type'
 
 const CountryDetailPage = () => {
     const { id } = useParams()
-    console.log(id)
-
     const [data, setData] = useState<Datum[]>([]) // Update the type of 'data' state variable
 
     useEffect(() => {
