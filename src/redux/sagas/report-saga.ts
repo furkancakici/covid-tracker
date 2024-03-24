@@ -1,13 +1,14 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 
 import CovidTrackerService from '@/service/covid-tracker-service'
 import { Reports } from '@/types/reports-type'
+import { PayloadAction } from '@reduxjs/toolkit'
 
 import { getReportsFailure, getReportsSuccess } from '../slices/report-slice'
 
-function* workGetReportFetch() {
+function* getReportSaga({ payload: iso }: PayloadAction<string>) {
     try {
-        const reports: Reports = yield call(() => CovidTrackerService.getReports('USA'))
+        const reports: Reports = yield call(() => CovidTrackerService.getReports({ iso }))
 
         yield put(getReportsSuccess(reports))
     } catch (error) {
@@ -16,7 +17,7 @@ function* workGetReportFetch() {
 }
 
 function* reportSaga() {
-    yield takeEvery('reports/getReportsFetch', workGetReportFetch)
+    yield takeLatest('reports/getReportsFetch', getReportSaga)
 }
 
 export default reportSaga

@@ -1,23 +1,28 @@
-import { Datum } from '@/types/reports-type'
-import { createSlice } from '@reduxjs/toolkit'
+import { ReportSliceType } from '@/types/report-slice-type'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const initialState: { data: Datum[]; isLoading: boolean } = {
+const initialState: ReportSliceType = {
     data: [],
-    isLoading: false
+    isLoading: false,
+    error: ''
 }
 
 const reportSlice = createSlice({
     name: 'report',
     initialState,
     reducers: {
-        getReportsFetch: state => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        getReportsFetch: (state, { payload: iso }: PayloadAction<string>) => {
             state.isLoading = true
+            state.error = ''
         },
         getReportsSuccess: (state, action) => {
+            state.isLoading = false
             state.data = action.payload
         },
         getReportsFailure: state => {
             state.isLoading = false
+            state.error
         }
     }
 })

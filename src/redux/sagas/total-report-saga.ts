@@ -1,11 +1,11 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 
 import CovidTrackerService from '@/service/covid-tracker-service'
 import { TotalReport } from '@/types/total-report-type'
 
 import { getTotalReportsFailure, getTotalReportsSuccess } from '../slices/total-report-slice'
 
-function* workGetTotalReportFetch() {
+function* getTotalReportSaga() {
     try {
         const reports: TotalReport = yield call(() => CovidTrackerService.getTotalReports('2020-06-16'))
 
@@ -16,7 +16,7 @@ function* workGetTotalReportFetch() {
 }
 
 function* reportSaga() {
-    yield takeEvery('reports/getTotalReportsFetch', workGetTotalReportFetch)
+    yield takeLatest('reports/getTotalReportsFetch', getTotalReportSaga)
 }
 
 export default reportSaga

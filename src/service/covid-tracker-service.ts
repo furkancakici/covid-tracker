@@ -4,7 +4,7 @@ import { Reports } from '@/types/reports-type'
 import { TotalReport } from '@/types/total-report-type'
 
 class CovidTrackerService extends BaseService {
-    async getReports(iso: string, date: string = '2020-06-16') {
+    async getReports({ iso, date = '2020-06-16' }: { iso: string; date?: string }) {
         const response = await http.get<Reports>(`reports${this._query({ iso, date })}`)
         return response
     }
