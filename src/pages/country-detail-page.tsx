@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/ui/tooltip'
 import { DataTable } from '@/components/molecules/data-table'
 import CovidTrackerService from '@/service/covid-tracker-service'
-import { Datum } from '@/types/table-type'
+import { Datum } from '@/types/reports-type'
 import { ColumnDef } from '@tanstack/react-table'
 
 const columns: ColumnDef<Datum>[] = [
