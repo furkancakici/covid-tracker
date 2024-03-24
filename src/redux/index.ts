@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 import createSagaMiddleware from '@redux-saga/core'
 import { configureStore } from '@reduxjs/toolkit'
@@ -16,5 +16,8 @@ export const store = configureStore({
 
 sagaMiddleware.run(rootSaga)
 
-export const useStoreDispatch = () => useDispatch<typeof store.dispatch>()
 export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
+export const useAppDispatch: () => AppDispatch = useDispatch
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector

@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { createSearchParams, useNavigate } from 'react-router-dom'
 import WorldMap, { CountryContext } from 'react-svg-worldmap'
 
 import { alpha2Code } from '@/constants'
@@ -8,10 +8,14 @@ import { alpha2ToAlpha3 } from '@/lib/helper'
 const WorldMapChart = () => {
     const navigate = useNavigate()
 
-    const clickAction = useCallback(({ countryCode }: CountryContext) => {
-        const isoCode = alpha2ToAlpha3(countryCode.toLowerCase())
-        navigate(`/country/${isoCode}`)
-    }, [])
+    const clickAction = useCallback(
+        ({ countryCode }: CountryContext) => {
+            const isoCode = alpha2ToAlpha3(countryCode.toLowerCase())
+            const searchParams = { 'iso-code': isoCode ?? 'USA', date: '20-06-2020' }
+            navigate({ pathname: `/country`, search: `?${createSearchParams(searchParams)}` })
+        },
+        [navigate]
+    )
 
     const customTooltipText = useCallback(({ countryName }: CountryContext) => {
         return `${countryName}`

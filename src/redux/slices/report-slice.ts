@@ -1,3 +1,4 @@
+import { ReportPayloadType } from '@/types/report-payload-type'
 import { ReportSliceType } from '@/types/report-slice-type'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
@@ -12,7 +13,7 @@ const reportSlice = createSlice({
     initialState,
     reducers: {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        getReportsFetch: (state, { payload: iso }: PayloadAction<string>) => {
+        getReportsFetch: (state, { payload }: PayloadAction<ReportPayloadType>) => {
             state.isLoading = true
             state.error = ''
         },

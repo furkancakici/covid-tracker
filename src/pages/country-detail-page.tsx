@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import dayjs from 'dayjs'
-import { useParams } from 'react-router-dom'
 
+// import { useParams } from 'react-router-dom'
+import { Skeleton } from '@/components/atoms/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/ui/tooltip'
 import { DataTable } from '@/components/molecules/data-table'
-import CovidTrackerService from '@/service/covid-tracker-service'
+import useSearchQuery from '@/hooks/use-search-query'
+import { useAppDispatch, useAppSelector } from '@/redux'
+import { getReportsFetch } from '@/redux/slices/report-slice'
 import { Datum } from '@/types/reports-type'
 import { ColumnDef } from '@tanstack/react-table'
 
@@ -73,25 +76,42 @@ const columns: ColumnDef<Datum>[] = [
     }
 ]
 
+const PageSkeleton = () => (
+    <div className='flex flex-col space-y-3'>
+        <Skeleton className='h-9 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+        <Skeleton className='h-7 w-full rounded-xl' />
+    </div>
+)
+
 const CountryDetailPage = () => {
-    const { id } = useParams()
-    const [data, setData] = useState<Datum[]>([]) // Update the type of 'data' state variable
+    // const { id } = useParams()
+    const query = useSearchQuery()
+    const isoCode = query.get('iso-code')
+    const date = query.get('date')
+    console.log(date)
+
+    const { data, isLoading } = useAppSelector(state => state.report)
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await CovidTrackerService.getReports(id!)
-            const result = response.data.data
-            setData(result)
-        }
-        console.log('fetchData', data)
-
-        fetchData()
-    }, [id])
+        dispatch(getReportsFetch({ iso: isoCode ?? 'USA', date: date ?? '2020-06-16' }))
+    }, [isoCode, date, dispatch])
 
     return (
         <>
-            <h2 className='mb-2'>CountryDetailPage</h2>
-            <DataTable columns={columns} data={data} />
+            <h2 className='mb-2'>Covid Ülke Detayları</h2>
+            {isLoading ? <PageSkeleton /> : <DataTable columns={columns} data={data} />}
         </>
     )
 }

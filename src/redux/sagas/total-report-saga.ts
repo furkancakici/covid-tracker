@@ -16,7 +16,7 @@ function* getTotalReportSaga() {
 }
 
 function* reportSaga() {
-    yield takeLatest('reports/getTotalReportsFetch', getTotalReportSaga)
+    yield takeLatest('totalReport/getTotalReportsFetch', getTotalReportSaga)
 }
 
 export default reportSaga
