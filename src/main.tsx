@@ -10,6 +10,8 @@ import { store } from './redux'
 
 import '@/styles/globals.css'
 
+import './i18n'
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <Provider store={store}>
