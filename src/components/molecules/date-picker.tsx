@@ -19,8 +19,6 @@ const DatePicker = () => {
         setToggle(!toggle)
     }
 
-    console.log('dated', date)
-
     return (
         <Popover onOpenChange={toggler} open={toggle}>
             <PopoverTrigger asChild>
