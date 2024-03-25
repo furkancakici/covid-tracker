@@ -11,7 +11,7 @@ const WorldMapChart = () => {
     const clickAction = useCallback(
         ({ countryCode }: CountryContext) => {
             const isoCode = alpha2ToAlpha3(countryCode.toLowerCase())
-            const searchParams = { 'iso-code': isoCode ?? 'USA', date: '20-06-2020' }
+            const searchParams = { 'iso-code': isoCode ?? 'USA', date: '2020-06-16' }
             navigate({ pathname: `/country`, search: `?${createSearchParams(searchParams)}` })
         },
         [navigate]

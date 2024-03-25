@@ -7,17 +7,20 @@ const initialState: ReportSliceType = {
     data: [],
     isLoading: false,
     error: '',
-    isoCode: ''
+    date: ''
 }
 
 const reportSlice = createSlice({
     name: 'report',
     initialState,
     reducers: {
+        setReportDate: (state, { payload }: PayloadAction<string>) => {
+            state.date = payload
+        },
         getReportsFetch: (state, { payload }: PayloadAction<ReportPayloadType>) => {
             state.isLoading = true
             state.error = ''
-            state.isoCode = payload.iso
+            state.date = payload.date
         },
         getReportsSuccess: (state, action) => {
             state.isLoading = false
@@ -30,5 +33,5 @@ const reportSlice = createSlice({
     }
 })
 
-export const { getReportsFetch, getReportsSuccess, getReportsFailure } = reportSlice.actions
+export const { getReportsFetch, getReportsSuccess, getReportsFailure, setReportDate } = reportSlice.actions
 export default reportSlice.reducer

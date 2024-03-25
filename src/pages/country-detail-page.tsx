@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import dayjs from 'dayjs'
 
-// import { useParams } from 'react-router-dom'
 import { Skeleton } from '@/components/atoms/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/ui/tooltip'
 import { DataTable } from '@/components/molecules/data-table'
@@ -95,13 +94,11 @@ const PageSkeleton = () => (
 )
 
 const CountryDetailPage = () => {
-    // const { id } = useParams()
     const query = useSearchQuery()
     const isoCode = query.get('iso-code')
     const date = query.get('date')
-    console.log(date)
 
-    const { data, isLoading } = useAppSelector(state => state.report)
+    const { data, isLoading, error } = useAppSelector(state => state.report)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -112,6 +109,7 @@ const CountryDetailPage = () => {
         <>
             <h2 className='mb-2'>Covid Ülke Detayları</h2>
             {isLoading ? <PageSkeleton /> : <DataTable columns={columns} data={data} />}
+            {error && <p>no data</p>}
         </>
     )
 }

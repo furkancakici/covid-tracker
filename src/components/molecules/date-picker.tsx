@@ -1,0 +1,52 @@
+import { useState } from 'react'
+import dayjs from 'dayjs'
+import { Calendar as CalendarIcon } from 'lucide-react'
+
+import { Button } from '@/components/atoms/ui/button'
+import { Calendar } from '@/components/atoms/ui/calendar'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/atoms/ui/popover'
+import { cn } from '@/lib/utils'
+import { useAppDispatch, useAppSelector } from '@/redux'
+import { setReportDate } from '@/redux/slices/report-slice'
+
+const DatePicker = () => {
+    const dispatch = useAppDispatch()
+    const date = useAppSelector(state => state.report.date)
+
+    const [toggle, setToggle] = useState<boolean>(false)
+
+    const toggler = () => {
+        setToggle(!toggle)
+    }
+
+    console.log('dated', date)
+
+    return (
+        <Popover onOpenChange={toggler} open={toggle}>
+            <PopoverTrigger asChild>
+                <Button
+                    variant={'outline'}
+                    className={cn(
+                        'w-[150px] justify-start text-left font-normal mb-3',
+                        !date && 'text-muted-foreground'
+                    )}>
+                    <CalendarIcon className='mr-2 h-4 w-4' />
+                    {date ? dayjs(date).format('YYYY-MM-DD') : <span>Pick a date</span>}
+                </Button>
+            </PopoverTrigger>
+            <PopoverContent className='w-auto p-0'>
+                <Calendar
+                    mode='single'
+                    selected={date ? new Date(date) : undefined}
+                    onSelect={e => {
+                        dispatch(setReportDate(dayjs(e).format('YYYY-MM-DD')))
+                        toggler()
+                    }}
+                    initialFocus
+                />
+            </PopoverContent>
+        </Popover>
+    )
+}
+
+export default DatePicker
