@@ -10,7 +10,7 @@ class CovidTrackerService extends BaseService {
     }
 
     async getTotalReports(date: string = '2020-06-16') {
-        const response = await http.get<TotalReport>(`reports${this._query({ date })}`)
+        const response = (await http.get<TotalReport>(`reports/total${this._query({ date })}`)).data.data
         return response
     }
 
