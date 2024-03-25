@@ -5,6 +5,7 @@ import { Skeleton } from '@/components/atoms/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/ui/tooltip'
 import { DataTable } from '@/components/molecules/data-table'
 import useSearchQuery from '@/hooks/use-search-query'
+import { alpha3ToCountryName } from '@/lib/helper'
 import { useAppDispatch, useAppSelector } from '@/redux'
 import { getReportsFetch } from '@/redux/slices/report-slice'
 import { Datum } from '@/types/reports-type'
@@ -95,8 +96,11 @@ const PageSkeleton = () => (
 
 const CountryDetailPage = () => {
     const query = useSearchQuery()
+
     const isoCode = query.get('iso-code')
     const date = query.get('date')
+
+    const countryName = alpha3ToCountryName(isoCode ?? 'USA')
 
     const { data, isLoading, error } = useAppSelector(state => state.report)
     const dispatch = useAppDispatch()
@@ -107,7 +111,7 @@ const CountryDetailPage = () => {
 
     return (
         <>
-            <h2 className='mb-2'>Covid Ülke Detayları</h2>
+            <h2 className='mb-2'>Covid Ülke Detayları: {countryName}</h2>
             {isLoading ? <PageSkeleton /> : <DataTable columns={columns} data={data} />}
             {error && <p>no data</p>}
         </>
