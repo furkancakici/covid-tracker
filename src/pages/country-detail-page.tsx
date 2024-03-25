@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/atoms/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/ui/tooltip'
 import { DataTable } from '@/components/molecules/data-table'
 import useSearchQuery from '@/hooks/use-search-query'
-import { alpha3ToCountryName } from '@/lib/helper'
+import { alpha3ToAlpha2, alpha3ToCountryName } from '@/lib/helper'
 import { useAppDispatch, useAppSelector } from '@/redux'
 import { getReportsFetch } from '@/redux/slices/report-slice'
 import { Datum } from '@/types/reports-type'
@@ -101,6 +101,8 @@ const CountryDetailPage = () => {
     const date = query.get('date')
 
     const countryName = alpha3ToCountryName(isoCode ?? 'USA')
+    const countryIso2 = alpha3ToAlpha2(isoCode ?? 'US')
+    const countryFlag = `https://flagsapi.com/${countryIso2?.toUpperCase()}/flat/32.png`
 
     const { data, isLoading, error } = useAppSelector(state => state.report)
     const dispatch = useAppDispatch()
@@ -111,7 +113,10 @@ const CountryDetailPage = () => {
 
     return (
         <>
-            <h2 className='mb-2'>Covid Ülke Detayları: {countryName}</h2>
+            <div className='flex gap-x-2'>
+                <h2 className='mb-2'>Covid Ülke Detayları: {countryName}</h2>
+                <img src={countryFlag} alt='country-flag' />
+            </div>
             {isLoading ? <PageSkeleton /> : <DataTable columns={columns} data={data} />}
             {error && <p>no data</p>}
         </>

@@ -10,6 +10,16 @@ export const alpha2ToAlpha3 = (alpha2: string) => {
     return null
 }
 
+export const alpha3ToAlpha2 = (alpha3: string) => {
+    for (let i = 0; i < countryAlpha2Code.length; i++) {
+        if (countryAlpha2Code[i][1] === alpha3) {
+            return countryAlpha2Code[i][0]
+        }
+    }
+
+    return null
+}
+
 export const alpha3ToCountryName = (alpha3: string) => {
     for (let i = 0; i < countryAlpha2Code.length; i++) {
         if (countryAlpha2Code[i][1] === alpha3) {

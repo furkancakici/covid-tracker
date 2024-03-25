@@ -31,7 +31,7 @@ const InformationCard = () => {
                 </CardHeader>
                 <CardContent>
                     <div className='text-2xl font-bold'>
-                        {isLoading ? <PageSkeleton /> : data?.confirmed.toLocaleString('tr')}
+                        {isLoading ? <PageSkeleton /> : data?.confirmed?.toLocaleString('tr') || 0}
                     </div>
                 </CardContent>
             </Card>
@@ -42,7 +42,7 @@ const InformationCard = () => {
                 </CardHeader>
                 <CardContent>
                     <div className='text-2xl font-bold'>
-                        {isLoading ? <PageSkeleton /> : data?.deaths.toLocaleString('tr')}
+                        {isLoading ? <PageSkeleton /> : data?.deaths?.toLocaleString('tr') || 0}
                     </div>
                 </CardContent>
             </Card>
@@ -53,7 +53,7 @@ const InformationCard = () => {
                 </CardHeader>
                 <CardContent>
                     <div className='text-2xl font-bold'>
-                        {isLoading ? <PageSkeleton /> : data?.recovered.toLocaleString('tr')}
+                        {isLoading ? <PageSkeleton /> : data?.recovered?.toLocaleString('tr') || 0}
                     </div>
                 </CardContent>
             </Card>
@@ -64,7 +64,7 @@ const InformationCard = () => {
                 </CardHeader>
                 <CardContent>
                     <div className='text-2xl font-bold'>
-                        {isLoading ? <PageSkeleton /> : data?.active.toLocaleString('tr')}
+                        {isLoading ? <PageSkeleton /> : data?.active?.toLocaleString('tr') || 0}
                     </div>
                 </CardContent>
             </Card>
