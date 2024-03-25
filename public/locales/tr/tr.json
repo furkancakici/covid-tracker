@@ -1,0 +1,25 @@
+{
+    "country_select": {
+        "confirmed": "Toplam Vaka",
+        "deaths": "Toplam Ölüm",
+        "recovered": "İyileşen Hasta",
+        "active": "Aktif Vaka"
+    },
+    "country_details": {
+        "table_title": "Ülke Detayları"
+    },
+    "report_table": {
+        "region": "Bölge",
+        "confirmed": "Toplam Vaka Sayısı",
+        "deaths": "Toplam Ölüm Sayısı",
+        "recovered": "İyileşen Hasta Sayısı",
+        "confirmed_diff": "Yeni İyileşen Hasta Sayısı",
+        "deaths_diff": "Yeni Ölüm Sayısı",
+        "recovered_diff": "Yeni İyileşen Hasta Sayısı",
+        "active": "Aktif Vaka Sayısı",
+        "active_diff": "Aktif Vaka Sayısındaki Değişim",
+        "fatality_rate": "Ölüm Oranı",
+        "last_update": "Son Güncelleme Tarihi",
+        "date": "Tarih"
+    }
+}

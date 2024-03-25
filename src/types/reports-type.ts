@@ -4,8 +4,8 @@ export interface Reports {
 
 export interface Datum {
     date: Date
-    confirmed: number
-    deaths: number
+    confirmed: string
+    deaths: string
     recovered: number
     confirmed_diff: number
     deaths_diff: number

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Activity, FileSliders, HeartPulse, Users } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/atoms/ui/card'
 import { Skeleton } from '@/components/atoms/ui/skeleton'
@@ -13,6 +14,7 @@ const PageSkeleton = () => (
 )
 
 const InformationCard = () => {
+    const { t } = useTranslation()
     const date = useAppSelector(state => state.report.date)
     const { data, isLoading } = useAppSelector(state => state.totalReport)
 
@@ -26,7 +28,7 @@ const InformationCard = () => {
         <div className='grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4'>
             <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                    <CardTitle className='text-sm font-medium'>Toplam Vaka</CardTitle>
+                    <CardTitle className='text-sm font-medium'>{t('country_select.confirmed')}</CardTitle>
                     <FileSliders className='h-4 w-4 text-muted-foreground' />
                 </CardHeader>
                 <CardContent>
@@ -37,7 +39,7 @@ const InformationCard = () => {
             </Card>
             <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                    <CardTitle className='text-sm font-medium'>Toplam Ölüm</CardTitle>
+                    <CardTitle className='text-sm font-medium'>{t('country_select.deaths')}</CardTitle>
                     <Users className='h-4 w-4 text-muted-foreground' />
                 </CardHeader>
                 <CardContent>
@@ -48,7 +50,7 @@ const InformationCard = () => {
             </Card>
             <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                    <CardTitle className='text-sm font-medium'>İyileşen Hasta</CardTitle>
+                    <CardTitle className='text-sm font-medium'>{t('country_select.recovered')}</CardTitle>
                     <HeartPulse className='h-4 w-4 text-muted-foreground' />
                 </CardHeader>
                 <CardContent>
@@ -59,7 +61,7 @@ const InformationCard = () => {
             </Card>
             <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                    <CardTitle className='text-sm font-medium'>Aktif Vaka</CardTitle>
+                    <CardTitle className='text-sm font-medium'>{t('country_select.active')}</CardTitle>
                     <Activity className='h-4 w-4 text-muted-foreground' />
                 </CardHeader>
                 <CardContent>

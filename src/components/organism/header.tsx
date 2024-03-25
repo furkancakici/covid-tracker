@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 
 import { ModeToggle } from '@/components/molecules/mode-toggle'
+import TranslateToggle from '@/components/molecules/translate-toggle'
 
 const Header = () => {
     return (
@@ -22,8 +23,9 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <div className='flex flex-1 justify-end'>
+                <div className='flex flex-1 justify-end gap-2'>
                     <ModeToggle />
+                    <TranslateToggle />
                 </div>
             </div>
         </header>

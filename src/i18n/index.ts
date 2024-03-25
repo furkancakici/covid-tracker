@@ -1,20 +1,27 @@
 import i18n from 'i18next'
+import detector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
-i18n.use(initReactI18next).init({
-    resources: {
-        en: {
-            translation: {
-                'Welcome to React': 'Welcome to React and react-i18next'
-            }
-        }
-    },
-    lng: 'tr',
-    fallbackLng: 'tr',
+import en from '@public/locales/en/en.json'
+import tr from '@public/locales/tr/tr.json'
 
-    interpolation: {
-        escapeValue: false
-    }
-})
+i18n.use(detector)
+    .use(initReactI18next)
+    .init({
+        resources: {
+            tr: {
+                translation: tr
+            },
+            en: {
+                translation: en
+            }
+        },
+        lng: 'tr',
+        fallbackLng: 'tr',
+
+        interpolation: {
+            escapeValue: false
+        }
+    })
 
 export default i18n
