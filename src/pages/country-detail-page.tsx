@@ -6,8 +6,8 @@ import { Skeleton } from '@/components/atoms/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/ui/tooltip'
 import { DataTable } from '@/components/molecules/data-table'
 import DatePicker from '@/components/molecules/date-picker'
+import useCountryInfo from '@/hooks/use-country-info'
 import useSearchQuery from '@/hooks/use-search-query'
-import { alpha3ToAlpha2, alpha3ToCountryName } from '@/lib/helper'
 import { useAppDispatch, useAppSelector } from '@/redux'
 import { getReportsFetch } from '@/redux/slices/report-slice'
 import { Datum } from '@/types/reports-type'
@@ -19,10 +19,7 @@ const CountryDetailPage = () => {
     const date = useAppSelector(state => state.report.date)
 
     const isoCode = query.get('iso-code')
-
-    const countryName = alpha3ToCountryName(isoCode ?? 'USA')
-    const countryIso2 = alpha3ToAlpha2(isoCode ?? 'US')
-    const countryFlag = `https://flagsapi.com/${countryIso2?.toUpperCase()}/flat/32.png`
+    const { countryName, countryFlag } = useCountryInfo(isoCode!)
 
     const { data, isLoading, error } = useAppSelector(state => state.report)
     const dispatch = useAppDispatch()
