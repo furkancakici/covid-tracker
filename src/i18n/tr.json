@@ -8,6 +8,7 @@
     "country_details": {
         "table_title": "Ülke Detayları"
     },
+    "table_date": "Tarih",
     "report_table": {
         "region": "Bölge",
         "confirmed": "Toplam Vaka Sayısı",

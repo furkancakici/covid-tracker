@@ -13,7 +13,7 @@ const WorldMapChart = () => {
     const clickAction = useCallback(
         ({ countryCode }: CountryContext) => {
             const isoCode = alpha2ToAlpha3(countryCode.toLowerCase())
-            const searchParams = { 'iso-code': isoCode ?? 'USA', date: date.length > 0 ? date : '2020-06-16' }
+            const searchParams = { 'iso-code': isoCode ?? 'USA' }
 
             navigate({ pathname: `/country`, search: `?${createSearchParams(searchParams)}` })
         },

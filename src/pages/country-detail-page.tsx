@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Skeleton } from '@/components/atoms/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/atoms/ui/tooltip'
 import { DataTable } from '@/components/molecules/data-table'
+import DatePicker from '@/components/molecules/date-picker'
 import useSearchQuery from '@/hooks/use-search-query'
 import { alpha3ToAlpha2, alpha3ToCountryName } from '@/lib/helper'
 import { useAppDispatch, useAppSelector } from '@/redux'
@@ -13,12 +14,11 @@ import { Datum } from '@/types/reports-type'
 import { ColumnDef } from '@tanstack/react-table'
 
 const CountryDetailPage = () => {
-    const { t } = useTranslation()
-
     const query = useSearchQuery()
+    const { t } = useTranslation()
+    const date = useAppSelector(state => state.report.date)
 
     const isoCode = query.get('iso-code')
-    const date = query.get('date')
 
     const countryName = alpha3ToCountryName(isoCode ?? 'USA')
     const countryIso2 = alpha3ToAlpha2(isoCode ?? 'US')
@@ -28,8 +28,8 @@ const CountryDetailPage = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(getReportsFetch({ iso: isoCode ?? 'USA', date: date ?? '2020-06-16' }))
-    }, [isoCode, date, dispatch])
+        dispatch(getReportsFetch({ iso: isoCode ?? 'USA', date: date || '2020-06-16' }))
+    }, [isoCode, dispatch, date])
 
     const columns: ColumnDef<Datum>[] = [
         {
@@ -99,10 +99,18 @@ const CountryDetailPage = () => {
     return (
         <>
             <div className='flex bg-secondary h-10 rounded-md justify-center items-center gap-x-2'>
-                <h2 className='font-bold'>
-                    {t('country_details.table_title')}: {countryName}
-                </h2>
-                <img src={countryFlag} alt='country-flag' />
+                <div className='flex justify-center items-center gap-1'>
+                    <h2 className='font-bold'>{t('country_details.table_title')}:</h2>
+                    {countryName}
+                    <img src={countryFlag} alt='country-flag' />
+                </div>
+                -
+                <div className='flex items-center justify-center gap-1'>
+                    <h2 className='font-bold'>{t('table_date')}: </h2>
+                    <span className='mt-3'>
+                        <DatePicker />
+                    </span>
+                </div>
             </div>
             {isLoading ? <PageSkeleton /> : <DataTable columns={columns} data={data} />}
             {error && <p>no data</p>}

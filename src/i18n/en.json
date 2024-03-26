@@ -8,6 +8,7 @@
     "country_details": {
         "table_title": "Country Details"
     },
+    "table_date": "Date",
     "report_table": {
         "region": "Region",
         "confirmed": "Confirmed",
