@@ -20,6 +20,7 @@
         "active_diff": "Active Diff",
         "fatality_rate": "Fatality Rate",
         "last_update": "Last Update",
-        "date": "Date"
+        "date": "Date",
+        "no_result": "No Result"
     }
 }

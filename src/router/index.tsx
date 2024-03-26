@@ -10,6 +10,7 @@ const ReportsPage = lazy(() => import('@/pages/reports-page'))
 export const router = createBrowserRouter([
     {
         element: <MainLayoutPage />,
+        errorElement: <div>Bir hata oluştu. </div>,
         children: [
             {
                 path: '/',

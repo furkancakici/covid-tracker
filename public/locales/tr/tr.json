@@ -20,6 +20,7 @@
         "active_diff": "Aktif Vaka Sayısındaki Değişim",
         "fatality_rate": "Ölüm Oranı",
         "last_update": "Son Güncelleme Tarihi",
-        "date": "Tarih"
+        "date": "Tarih",
+        "no_result": "Sonuç Bulunamadı"
     }
 }

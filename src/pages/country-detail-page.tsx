@@ -50,19 +50,7 @@ const CountryDetailPage = () => {
         },
         {
             accessorKey: 'confirmed',
-            header: t('report_table.confirmed'),
-            cell: ({ row }) => (
-                <>
-                    <Tooltip>
-                        <TooltipTrigger>
-                            {(row.original.confirmed.length >= 22
-                                ? row.original.confirmed.substring(0, 22).concat('...')
-                                : row.original.confirmed) || 'N/A'}
-                        </TooltipTrigger>
-                        <TooltipContent>{row.original.confirmed}</TooltipContent>
-                    </Tooltip>
-                </>
-            )
+            header: t('report_table.confirmed')
         },
         {
             accessorKey: 'deaths',
@@ -99,12 +87,12 @@ const CountryDetailPage = () => {
         {
             accessorKey: 'last_update',
             header: t('report_table.last_update'),
-            cell: ({ row }) => dayjs(row.original.last_update).format('DD-MM-YYYY')
+            cell: ({ row }) => dayjs(row.original.last_update).format('YYYY-MM-DD')
         },
         {
             accessorKey: 'date',
             header: t('report_table.date'),
-            cell: ({ row }) => dayjs(row.original.date).format('DD-MM-YYYY')
+            cell: ({ row }) => dayjs(row.original.date).format('YYYY-MM-DD')
         }
     ]
 
