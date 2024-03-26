@@ -95,18 +95,16 @@ const CountryDetailPage = () => {
 
     return (
         <>
-            <div className='flex bg-secondary h-10 rounded-md justify-center items-center gap-x-2'>
+            <div className='flex flex-col sm:flex-row bg-secondary h-full sm:h-12 mb-2 rounded-md justify-center items-center gap-x-2'>
                 <div className='flex justify-center items-center gap-1'>
-                    <h2 className='font-bold'>{t('country_details.table_title')}:</h2>
+                    <h2 className='text-sm sm:text-base font-bold'>{t('country_details.table_title')}:</h2>
                     {countryName}
                     <img src={countryFlag} alt='country-flag' />
                 </div>
-                -
-                <div className='flex items-center justify-center gap-1'>
-                    <h2 className='font-bold'>{t('table_date')}: </h2>
-                    <span className='mt-3'>
-                        <DatePicker />
-                    </span>
+                <span className='hidden sm:block'>-</span>
+                <div className='flex items-center justify-center p-1 gap-1'>
+                    <h2 className='text-sm sm:text-base font-bold'>{t('table_date')}: </h2>
+                    <DatePicker />
                 </div>
             </div>
             {isLoading ? <PageSkeleton /> : <DataTable columns={columns} data={data} />}

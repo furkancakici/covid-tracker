@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import WorldMap, { CountryContext } from 'react-svg-worldmap'
 
@@ -9,6 +10,9 @@ import { useAppSelector } from '@/redux'
 const WorldMapChart = () => {
     const navigate = useNavigate()
     const date = useAppSelector(state => state.report.date)
+    const isMobileDevice = useMediaQuery({
+        query: '(max-width: 500px)'
+    })
 
     const clickAction = useCallback(
         ({ countryCode }: CountryContext) => {
@@ -28,7 +32,7 @@ const WorldMapChart = () => {
         <WorldMap
             color='#EA580B'
             backgroundColor='bg-background'
-            size='xl'
+            size={isMobileDevice ? 'md' : 'xl'}
             data={alpha2Code}
             onClickFunction={clickAction}
             tooltipTextFunction={customTooltipText}
