@@ -2,7 +2,7 @@
 
 The Covid Tracker is a web application developed with React.js, which retrieves Covid-19 current data through an API and presents it to users.
 
-Live: [Covid Tracker App](https://covid-tracker-furkancakici.vercel.app/)
+Live: [Covid Tracker App](https://covid-tracker-app-v1.netlify.app/)
 
 ## What is Tech Stack?
 
